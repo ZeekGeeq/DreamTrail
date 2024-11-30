@@ -13,6 +13,7 @@ return (
           )}
             <li><Link to='/'>Trails</Link></li>
             <li><Link to='/stats'>Stats</Link></li>
+            <li><Link to='/goals'>Goals</Link></li>
         </ul>
     </nav>
 )
