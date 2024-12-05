@@ -1,10 +1,14 @@
 .profileContainer {
+  position: absolute;
+  left: 50%;
+  transform: translate(-250px, 0%);
   text-align: center;
   background-color: #ffffff;
   padding: 20px;
   border-radius: 10px;
   max-width: 400px;
   width: 100%;
+  margin-left: 50px; 
 }
 
 .profilePicture {
@@ -23,13 +27,13 @@
 
 .buttonContainer {
   display: flex;
-  gap: 10px;
   justify-content: center;
+  margin-top: 20px;
 }
 
 .button {
   text-decoration: none;
-  padding: 10px 20px;
+  padding: 12px 24px;
   border-radius: 5px;
   font-weight: bold;
   color: #fff;
@@ -37,16 +41,9 @@
   transition: background-color 0.3s ease;
 }
 
-.calendarButton {
-  background-color: #4285f4;
-}
-
 .logoutButton {
   background-color: #d9534f;
-}
-
-.calendarButton:hover {
-  background-color: #357ae8;
+  font-size: 16px;
 }
 
 .logoutButton:hover {

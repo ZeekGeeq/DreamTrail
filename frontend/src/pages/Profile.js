@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import styles from './Profile.module.css';
+const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 const Profile = () => {
   const [userInfo, setUserInfo] = useState(null);
@@ -9,20 +10,26 @@ const Profile = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get("http://localhost:5000/api/auth/check", { withCredentials: true })
-      .then(response => {
-        if (response.data.authenticated) { //checks authentication status
+    const fetchData = async () => {
+      console.log("Before delay");
+      await delay(750); // remove this and profile photo doesnt load bc overloading
+      console.log("After delay, fetching user data...");
+
+      try {
+        const response = await axios.get("http://localhost:5000/api/auth/check", { withCredentials: true });
+        if (response.data.authenticated) {
           setIsAuthenticated(true);
           setUserInfo(response.data.user);
-          console.log("Profile Picture URL:", response.data.user.photo);
         } else {
           navigate('/login');
         }
-      })
-      .catch(error => {
+      } catch (error) {
         console.error("Failed to fetch user profile:", error);
         navigate('/login');
-      });
+      }
+    };
+
+    fetchData();
   }, [navigate]);
 
   const handleLogout = async () => {
@@ -44,7 +51,6 @@ const Profile = () => {
       <h1 className={styles.greeting}>Hello, {userInfo.displayName}!</h1>
       <p className="global-class">Email: {userInfo.email}</p> {/*uses global style */}
       <div className={styles.buttonContainer}>
-        <a href="/calendar" className={`${styles.button} ${styles.calendarButton}`}>View Calendar Events</a>
         <button onClick={handleLogout} className={`${styles.button} ${styles.logoutButton}`}>Logout</button> {/*logout redirect and handling */}
       </div>
     </div>
