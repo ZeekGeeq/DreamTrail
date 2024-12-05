@@ -1,5 +1,4 @@
 import {useState} from 'react'
-import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 // import { KHR_DF_SAMPLE_DATATYPE_SIGNED } from 'three/examples/jsm/libs/ktx-parse.module.js'
 const GoalForm = () => {
@@ -14,15 +13,14 @@ const GoalForm = () => {
         e.preventDefault()
 
         const goal = { hours, minutes, frequency }
-        //change this to fit the goals
         try {
-            /*const response = await fetch('http://localhost:4000/api/trails', {
+            const response = await fetch('http://localhost:4000/api/goals', {
                 method: 'POST',
-                body: JSON.stringify(trail),
+                body: JSON.stringify(goal),
                 headers: {
                     'Content-Type': 'application/json'
                 }
-            })*/
+            })
 
             if (!response.ok) {
                 const errorText = await response.text()
