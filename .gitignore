@@ -1,3 +1,5 @@
 .env
 server/.env
 frontend/.env
+server/.env.example
+frontend/.env.example

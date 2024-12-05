@@ -15,6 +15,7 @@ const Navbar = ({ isAuthenticated }) => {
           )}
             <li><Link to='/trails'>Trails</Link></li>
             <li><Link to='/stats'>Stats</Link></li>
+            <li><Link to='/goals'>Goals</Link></li>
         </ul>
       </div>
     </section>

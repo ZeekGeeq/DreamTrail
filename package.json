@@ -1,8 +1,8 @@
 {
   "scripts": {
-  "start": "concurrently \"npm run server\" \"npm run client\"",
-  "server": "cd server && nodemon app.js",
-  "client": "cd frontend && npm start"
+    "start": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "cd server && nodemon app.js",
+    "client": "cd frontend && npm start"
 },
   "dependencies": {
     "concurrently": "^9.1.0"
