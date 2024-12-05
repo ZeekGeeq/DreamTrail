@@ -1,6 +1,3 @@
-/* Profile.module.css */
-
-/* Scoped styles specific to the Profile component */
 .profileContainer {
   text-align: center;
   background-color: #ffffff;
@@ -56,7 +53,6 @@
   background-color: #c9302c;
 }
 
-/* Global styles applied across the entire app */
 :global(.global-class) {
   font-family: Arial, sans-serif;
   color: #555;

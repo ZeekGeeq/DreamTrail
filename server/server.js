@@ -20,8 +20,12 @@ app.use(express.json())
 
 app.use(cors({
   origin: 'http://localhost:3001',
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type'],
   credentials: true
 }));
+
+app.options('*', cors())
 
 app.use(session({
     secret: process.env.SESSION_SECRET,
@@ -49,7 +53,7 @@ app.use('/api/users', userRoutes);
 
 app.use('/api/calendar', calendarRoutes);
 
-app.listen(3000, () => {
+app.listen(4000, () => {
     console.log("Server running on http://localhost:4000");
 })
 

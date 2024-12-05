@@ -32,7 +32,7 @@ function App() {
           <Routes>
             <Route
               path = "/"
-              element = {<Home />}
+              element = {<Login />}
             />
             <Route
               path = "/stats"
@@ -47,8 +47,8 @@ function App() {
             element={<Calendar />} 
             />
             <Route
-              path = "/login"
-              element = {<Login />}
+              path = "/trails"
+              element = {<Home />}
             />
           </Routes>
         </div>

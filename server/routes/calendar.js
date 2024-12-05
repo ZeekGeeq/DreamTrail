@@ -29,8 +29,7 @@ router.get('/events', async (req, res) => {
     //get events that are marked with q: value "DreamTrail"
     const response = await calendar.events.list({
       calendarId: 'primary',
-      q: 'DreamTrail',               
-      //"DreamTrail" keyword
+      q,
       timeMin: new Date().toISOString(),
       //where to search (starts from today)
       maxResults: 20,
