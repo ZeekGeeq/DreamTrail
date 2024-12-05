@@ -1,0 +1,68 @@
+/* Profile.module.css */
+
+/* Scoped styles specific to the Profile component */
+.profileContainer {
+  text-align: center;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 400px;
+  width: 100%;
+}
+
+.profilePicture {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-bottom: 15px;
+  object-fit: cover;
+  border: 2px solid #ddd;
+}
+
+.greeting {
+  font-size: 24px;
+  color: #333;
+}
+
+.buttonContainer {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.button {
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: bold;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.calendarButton {
+  background-color: #4285f4;
+}
+
+.logoutButton {
+  background-color: #d9534f;
+}
+
+.calendarButton:hover {
+  background-color: #357ae8;
+}
+
+.logoutButton:hover {
+  background-color: #c9302c;
+}
+
+/* Global styles applied across the entire app */
+:global(.global-class) {
+  font-family: Arial, sans-serif;
+  color: #555;
+}
+
+:global(h1) {
+  font-size: 32px;
+  color: #222;
+}
