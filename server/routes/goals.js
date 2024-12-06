@@ -7,7 +7,7 @@ const {
     getGoal,
     deleteGoal,
     createGoal
-}= require('../controllers/trailController')
+}= require('../controllers/goalController')
 
 const router = express.Router()
 
