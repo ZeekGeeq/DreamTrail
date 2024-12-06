@@ -23,14 +23,18 @@ const Goals = () => {
     }, [])
 
   return(
-    <div className="Goals">
-      <div className="goal-form">
-        <h1>Your Sleeping Goals</h1>
-        <GoalForm goals={goals} />
-      </div>
-      <div className="goal-display">
-        <h1>Set Goals</h1>
-        <GoalDetails goals={goals} />
+    <div className="container">
+      <div className="content">
+        <div className="goal-form">
+          <h1 className="title">Set Goals</h1>
+          <br></br>
+          <GoalForm goals={goals} />
+        </div>
+        <div className="goal-display">
+          <h1 className="title">Your Sleeping Goals</h1>
+          <br></br>
+          <GoalDetails goals={goals} />
+        </div>
       </div>
     </div>
   )

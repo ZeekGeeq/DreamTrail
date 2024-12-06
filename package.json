@@ -3,8 +3,9 @@
     "start": "concurrently \"npm run server\" \"npm run client\"",
     "server": "cd server && nodemon app.js",
     "client": "cd frontend && npm start"
-},
+  },
   "dependencies": {
-    "concurrently": "^9.1.0"
+    "concurrently": "^9.1.0",
+    "mongodb": "^6.11.0"
   }
 }

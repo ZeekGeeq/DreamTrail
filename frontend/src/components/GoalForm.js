@@ -1,5 +1,5 @@
 import {useState} from 'react'
-// import { KHR_DF_SAMPLE_DATATYPE_SIGNED } from 'three/examples/jsm/libs/ktx-parse.module.js'
+import './Goals.css';
 const GoalForm = () => {
     //const [date, setDate] = useState('')
     const [hours, setHours] = useState('')
@@ -48,27 +48,38 @@ const GoalForm = () => {
 
     // This section displays the form that takes input from the user.
     return (
-        <form className='create' onSubmit={handleSubmit}>
+        <form  onSubmit={handleSubmit}>
             <h3> Add a new goal</h3>
+            <br></br>
 
-            <p>Sleep for </p>
+            <div className='form-group'>
+            <span>Sleep for </span>
             <input
                 type="number"
                 onChange={(e) => setHours(e.target.value)}
                 value={hours}
             />
-            <p> hours and </p>
+
+            <span> hours and </span>
+            <br></br>
             <input
                 type="number"
                 onChange={(e) => setMinutes(e.target.value)}
                 value={minutes}
             />
-            <p> minutes every </p>
-            <input
-                type="number"
-                onChange={(e) => setFrequency(e.target.value)}
-                value={frequency}
-            />
+            <span> minutes every </span>
+            <select name="frequency" id="frequency" 
+            onChange={(e) => setFrequency(e.target.value)} 
+            value={frequency}>
+                <option value="day">day</option>
+                <option value="weekday">weekday</option>
+                <option value="weekend">weekend</option>
+                <option value="week">week</option>
+                <option value="month">month</option>
+                <option value="year">year</option>
+            </select>
+            </div>
+
             <button>Add Goal</button>
         </form>
     )

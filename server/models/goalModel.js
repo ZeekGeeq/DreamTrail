@@ -10,7 +10,7 @@ const goalSchema = new Schema({
         required: true
     },
     frequency: {
-        type: Number,
+        type: String,
         required: true
     }
 }, {timestamps: true})
