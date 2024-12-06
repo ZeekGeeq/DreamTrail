@@ -27,7 +27,7 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <Title/>
+        <Title isAuthenticated={isAuthenticated} />
         <Navbar isAuthenticated={isAuthenticated} />
         <div className = "pages">
           <Routes>
