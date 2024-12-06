@@ -9,13 +9,15 @@ const Navbar = ({ isAuthenticated }) => {
       <div class = 'sidebar'>
         <ul>
         {isAuthenticated ? (
+          <>
             <li><Link to="/profile">Profile</Link></li>
-          ) : (
-            <li><Link to="/">Login</Link></li>
-          )}
             <li><Link to='/trails'>Trails</Link></li>
             <li><Link to='/stats'>Stats</Link></li>
             <li><Link to='/goals'>Goals</Link></li>
+          </>
+          ) : (
+            <li><Link to="/">Login</Link></li>
+          )}
         </ul>
       </div>
     </section>

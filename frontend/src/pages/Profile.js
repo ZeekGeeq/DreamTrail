@@ -21,11 +21,11 @@ const Profile = () => {
           setIsAuthenticated(true);
           setUserInfo(response.data.user);
         } else {
-          navigate('/login');
+          navigate('/');
         }
       } catch (error) {
         console.error("Failed to fetch user profile:", error);
-        navigate('/login');
+        navigate('/');
       }
     };
 
