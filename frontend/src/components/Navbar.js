@@ -13,9 +13,10 @@ const Navbar = ({ isAuthenticated }) => {
             <li><Link to="/profile">Profile</Link></li>
             <li><Link to='/trails'>Trails</Link></li>
             <li><Link to='/stats'>Stats</Link></li>
+            <li><Link to='/goals'>Goals</Link></li>
           </>
           ) : (
-            <li><Link to="/login">Login</Link></li>
+            <li><Link to="/">Login</Link></li>
           )}
         </ul>
       </div>

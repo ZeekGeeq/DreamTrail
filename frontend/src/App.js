@@ -8,6 +8,7 @@ import Title from './components/Title'
 import Login from './pages/Login';
 import Profile from './pages/Profile';
 import Calendar from './pages/Calendar';
+import Goals from './pages/Goals.js'
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -26,7 +27,7 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <Title/>
+        <Title isAuthenticated={isAuthenticated} />
         <Navbar isAuthenticated={isAuthenticated} />
         <div className = "pages">
           <Routes>
@@ -39,16 +40,20 @@ function App() {
               element = {<StatsPage />}
             />
             <Route 
-            path="/profile" 
-            element={<Profile />} 
+              path="/profile" 
+              element={<Profile />} 
             /> 
             <Route 
-            path="/calendar" 
-            element={<Calendar />} 
+              path="/calendar" 
+              element={<Calendar />} 
             />
             <Route
               path = "/trails"
               element = {<Home />}
+            />
+            <Route
+              path = "/goals"
+              element = {<Goals />}
             />
           </Routes>
         </div>

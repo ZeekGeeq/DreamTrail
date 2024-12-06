@@ -12,6 +12,7 @@ const userRoutes = require('./routes/users');
 const authRoutes = require('./routes/auth');
 const path = require('path');
 const calendarRoutes = require('./routes/calendar');
+const goalRoute = require('./routes/goals');
 
 
 const app = express()
@@ -52,6 +53,8 @@ app.use('/api/auth', authRoutes);        // Google authentication routes
 app.use('/api/users', userRoutes); 
 
 app.use('/api/calendar', calendarRoutes);
+
+app.use('/api/goals', goalRoute);
 
 app.listen(4000, () => {
     console.log("Server running on http://localhost:4000");
