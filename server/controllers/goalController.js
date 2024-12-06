@@ -2,9 +2,9 @@ const Goal = require("../models/goalModel")
 const mongoose = require('mongoose')
 
 const getGoals = async (req,res) => {
-    const Goals = await Goals.find({}).sort({hours: -1})
+    const goals = await Goal.find({}).sort({hours: -1})
 
-    res.status(200).json(trails)
+    res.status(200).json(goals)
 }
 
 
