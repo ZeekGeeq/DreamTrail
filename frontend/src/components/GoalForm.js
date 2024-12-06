@@ -68,9 +68,13 @@ const GoalForm = () => {
                 value={minutes}
             />
             <span> minutes every </span>
-            <select name="frequency" id="frequency" 
-            onChange={(e) => setFrequency(e.target.value)} 
-            value={frequency}>
+            <select
+                name="frequency"
+                id="frequency" 
+                onChange={(e) => setFrequency(e.target.value)} 
+                value={frequency}
+            >
+                <option value="" disabled></option>
                 <option value="day">day</option>
                 <option value="weekday">weekday</option>
                 <option value="weekend">weekend</option>
