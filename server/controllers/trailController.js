@@ -1,79 +1,94 @@
-const Trail = require("../models/trailModel")
-const mongoose = require('mongoose')
+const Trail = require("../models/trailModel");
+const mongoose = require("mongoose");
 
-const getTrails = async (req,res) => {
-    const trails = await Trail.find({}).sort({createdAt: -1})
+const getTrails = async (req, res) => {
+  try {
+    const trails = await Trail.find({ userId: req.user._id }).sort({
+      createdAt: -1,
+    });
+    res.status(200).json(trails);
+  } catch (error) {
+    res.status(500).json({ error: "Failed to fetch trails" });
+  }
+};
 
-    res.status(200).json(trails)
-}
+const getTrail = async (req, res) => {
+  const { id } = req.params;
 
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res
+      .status(404)
+      .json({ error: "no such workout or invalid object id" });
+  }
 
-const getTrail = async(req,res) => {
-    const { id } = req.params
+  const trail = await Trail.findById(id);
 
-    if(!mongoose.Types.ObjectId.isValid(id)){
-        return res.status(404).json({error: 'no such workout or invalid object id'})
-    }
+  if (!trail) {
+    return res.status(404).json({ error: "No such trail exists" });
+  }
 
-    const trail = await Trail.findById(id)
+  res.status(200).json(trail);
+};
 
-    if(!trail){
-        return res.status(404).json({error: 'No such trail exists'})
-    }
+const createTrail = async (req, res) => {
+  const { date, duration, quality } = req.body;
+  //add new to db
+  try {
+    const trail = new Trail({
+      date,
+      duration,
+      quality,
+      userId: req.user._id,
+    });
 
-    res.status(200).json(trail)
-}
-
-
-const createTrail = async(req,res) => {
-    const {date, duration, quality} = req.body
-    //add the doc to the database
-    try{
-        const trail = await Trail.create({date, duration, quality})
-        res.status(200).json(trail)
-    } catch(error){
-        res.status(400).json({error: error.message})
-    }
-}
+    await trail.save();
+    res.status(201).json(trail);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
 
 //delete a Trail
-const deleteTrail = async(req,res) => {
-    const { id } = req.params
-    if(!mongoose.Types.ObjectId.isValid(id)){
-        return res.status(400).json({error: 'no such trail'})
+const deleteTrail = async (req, res) => {
+  try {
+    const trail = await Trail.findOneAndDelete({
+      _id: req.params.id,
+      userId: req.user._id,
+    });
+    if (!trail) {
+      return res.status(404).json({ error: "Trail not found" });
     }
 
-    const trail = await Trail.findByIdAndDelete({_id: id})
+    res.status(200).json(trail);
+  } catch (error) {
+    res.status(500).json({ error: "Failed to delete trail" });
+  }
+};
 
-    if(!trail){
-        return res.status(400).json({error: 'no such trail'
-        })
-    }
+const updateTrail = async (req, res) => {
+  const { id } = req.params;
 
-    res.status(200).json(trail)
-}
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(404).json({ error: "no such trail" });
+  }
 
-const updateTrail = async (req,res) => {
-    const { id } = req.params
+  const trail = await Trail.findByIdAndUpdate(
+    { _id: id },
+    {
+      ...req.body,
+    },
+  );
 
-    if(!mongoose.Types.ObjectId.isValid(id)) {
-        return res.status(404).json({error: 'no such trail'})
-    }
+  if (!trail) {
+    return res.status(400).json({ error: "no such trail" });
+  }
+  res.status(200).json(trail);
+};
 
-    const trail = await Trail.findByIdAndUpdate({_id: id},{
-        ...req.body
-    })
-
-    if(!trail){
-        return res.status(400).json({error: 'no such trail'})
-    }
-    res.status(200).json(trail)
-}
-
-module.exports= {
-    getTrails,
-    getTrail,
-    createTrail,
-    deleteTrail,
-    updateTrail
-}
+module.exports = {
+  getTrails,
+  getTrail,
+  createTrail,
+  deleteTrail,
+  updateTrail,
+};

@@ -1,12 +1,12 @@
 //Schema is implemented to create a defined structre for all data
 //that is being sent to the database
 //to keep consistency, make sure that all
-//schemas are JSON or structured similar 
+//schemas are JSON or structured similar
 //to the example
 
-const mongoose = require('mongoose')
+const mongoose = require("mongoose");
 
-const Schema = mongoose.Schema
+const Schema = mongoose.Schema;
 
 //may reconsider restructuring this
 //in need of a system to log time
@@ -20,19 +20,27 @@ const Schema = mongoose.Schema
 //should be able to change their log time
 //but it should not be able to be easily abused
 
-const trailSchema = new Schema({
-    date:{
-        type: String,
-        required: true
+const trailSchema = new Schema(
+  {
+    date: {
+      type: String,
+      required: true,
     },
     duration: {
-        type: Number,
-        required: true
+      type: Number,
+      required: true,
     },
     quality: {
-        type: Number,
-        required: true
-    }
-}, {timestamps: true})
+      type: Number,
+      required: true,
+    },
+    userId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
+    },
+  },
+  { timestamps: true },
+);
 
-module.exports = mongoose.model('Trail',trailSchema)
+module.exports = mongoose.model("Trail", trailSchema);

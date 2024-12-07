@@ -1,19 +1,18 @@
-.Datelabel{
-    padding-right: 30px;
+.Datelabel {
+  padding-right: 30px;
 }
 
-.Durationlabel{
-    padding-right:47px;
+.Durationlabel {
+  padding-right: 47px;
 }
 
-.Qualitylabel{
-    padding-right: 11px;
+.Qualitylabel {
+  padding-right: 11px;
 }
-.wrapper{
-    padding-bottom: 20px;
+.wrapper {
+  padding-bottom: 20px;
 }
 
-.create{
-    padding-left: 30px;
-    
+.create {
+  padding-left: 30px;
 }

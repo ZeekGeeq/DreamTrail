@@ -2,7 +2,8 @@
   "scripts": {
     "start": "concurrently \"npm run server\" \"npm run client\"",
     "server": "cd server && nodemon app.js",
-    "client": "cd frontend && npm start"
+    "client": "cd frontend && npm start",
+    "prettier": "prettier --write ."
   },
   "dependencies": {
     "concurrently": "^9.1.0",
