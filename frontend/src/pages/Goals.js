@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 
 import GoalForm from "../components/GoalForm";
 import GoalDetails from "../components/GoalDetails";
-import "./Goals.module.css";
 
 const Goals = () => {
   const [goals, setGoals] = useState([]);
